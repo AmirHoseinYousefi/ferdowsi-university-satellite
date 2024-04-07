@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=NetLED8_1 Pin=RA2-1
+Removed Pin From Net: NetName=NetLED8_4 Pin=RA2-2
+Add Pin To Net: Unknown Pin: Pin JP1-A2
+Add Pin To Net: Unknown Pin: Pin JP1-A3
+Add Pin To Net: Unknown Pin: Pin JP1-A10
+Add Pin To Net: Unknown Pin: Pin JP1-A11
+Add Pin To Net: Unknown Pin: Pin JP1-B2
+Add Pin To Net: Unknown Pin: Pin JP1-B3
+Add Pin To Net: Unknown Pin: Pin JP1-B10
+Add Pin To Net: Unknown Pin: Pin JP1-B11
+Added Pin To Net: NetName=3.3V Pin=LED?-1
+Added Pin To Net: NetName=NetLED8_4 Pin=RA2-1
+Added Pin To Net: NetName=NetLED8_1 Pin=RA2-2
+Added Pin To Net: NetName=GND Pin=X1-G
+Added Pin To Net: NetName=GND Pin=X1-G
+Added Pin To Net: NetName=GND Pin=X2-G
+Added Pin To Net: NetName=GND Pin=X2-G

@@ -1,0 +1,20 @@
+Removed Pin From Net: NetName=3.3V_RPI Pin=C9-1
+Removed Pin From Net: NetName=GND Pin=C9-2
+Removed Pin From Net: NetName=SD_DATA2 Pin=MicroSD1-1
+Removed Pin From Net: NetName=SD_DATA3 Pin=MicroSD1-2
+Removed Pin From Net: NetName=SD_CMD Pin=MicroSD1-3
+Removed Pin From Net: NetName=3.3V_RPI Pin=MicroSD1-4
+Removed Pin From Net: NetName=SD_CLK Pin=MicroSD1-5
+Removed Pin From Net: NetName=GND Pin=MicroSD1-6
+Removed Pin From Net: NetName=SD_DATA0 Pin=MicroSD1-7
+Removed Pin From Net: NetName=SD_DATA1 Pin=MicroSD1-8
+Removed Member From Class: ClassName=Main Member=C9
+Removed Member From Class: ClassName=Main Member=MicroSD1
+Add Pin To Net: Unknown Pin: Pin JP1-A2
+Add Pin To Net: Unknown Pin: Pin JP1-A3
+Add Pin To Net: Unknown Pin: Pin JP1-A10
+Add Pin To Net: Unknown Pin: Pin JP1-A11
+Add Pin To Net: Unknown Pin: Pin JP1-B2
+Add Pin To Net: Unknown Pin: Pin JP1-B3
+Add Pin To Net: Unknown Pin: Pin JP1-B10
+Add Pin To Net: Unknown Pin: Pin JP1-B11

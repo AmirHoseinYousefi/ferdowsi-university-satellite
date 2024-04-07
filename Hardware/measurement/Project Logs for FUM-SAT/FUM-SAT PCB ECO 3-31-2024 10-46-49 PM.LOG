@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=NetC2_2 Pin=R2-1
+Removed Member From Class: ClassName=Main Member=R2
+Removed Member From Class: ClassName=Main Member=S1
+Add Pin To Net: Unknown Pin: Pin JP1-A2
+Add Pin To Net: Unknown Pin: Pin JP1-A3
+Added Pin To Net: NetName=NetC2_2 Pin=JP1-A4
+Added Pin To Net: NetName=NetC2_2 Pin=JP1-A9
+Add Pin To Net: Unknown Pin: Pin JP1-A10
+Add Pin To Net: Unknown Pin: Pin JP1-A11
+Add Pin To Net: Unknown Pin: Pin JP1-B2
+Add Pin To Net: Unknown Pin: Pin JP1-B3
+Added Pin To Net: NetName=NetC2_2 Pin=JP1-B4
+Added Pin To Net: NetName=NetC2_2 Pin=JP1-B9
+Add Pin To Net: Unknown Pin: Pin JP1-B10
+Add Pin To Net: Unknown Pin: Pin JP1-B11
+Change Net Name : Old Net Name=NetC2_2 New Net Name=5VUSB
