@@ -1,0 +1,507 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD23\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">4/21/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">1:08:21 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc" class="file"><acronym title="E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc">E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">61</td></tr>
+</table>
+</td>
+</table><a name="ID3B4QS5MT5GFEL55431U2ACPMDJNS4HC0SU5FFAGVBAKGNXAPFP1K"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRCX1QKAONSNRCJBPRF5JEKD3WKMVNQHIJ2O3A5EVS14J0XJZF5YN">Clearance Constraint (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJU02IVKRUOWEG1XLGTAI4XB1NGWPAGN1R3P5ZTFXZG5S4U1MTSHO">Clearance Constraint (Gap=0.3mm) (InNamedPolygon('GND_L01_P000') Or InNamedPolygon('GND_L02_P001')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJM3PXVYT5PBXH4455EP5BNSAWGPJR0FBDBC110KG3ZKD0BOGEDLF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKMAJJWQCJLW1PLGDIFBTEB23YCTWZOYRRTPAHFLRJLTDA1QCTM1C">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBH5AGO244DTEJK1PTRPIN2YHOH4JRHUBY0AMHMLS5RFGH0TND5N">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDATV32UGDIX5CJWYOLZ4AFY5ZMOYFQ11NYHACWELJNHXXDYG0TC4N">Width Constraint (Min=0.254mm) (Max=1mm) (Preferred=0.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVV3WUPWVW0SQB5GBBY4CIYRGBBXESZSG20UGDZDMMZBYIQSNPC2K">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOLH0DHAHHH53CJQLZ3DAGSOYKK50NQMIEALRAXGCYII042LD1CNF">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0XZ3FNRFHNP3DCVQVPRMNND0DC4VBPPUHVEQCDLHSSCZVYW4NPQB">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDK5NX0U1HYTCBKKAGRC0XPOHQQJC2ONMVLKQU0UP0WEFOUGYZ4VMP">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">61</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2WUVGRBTSXCMMA52RTKQ2PHOCNRQUGGLJFU5ZDJMNBWBMIHII2HB">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3MHXOQSBTLKBG1JVLPICNVECCCQ54PW3OKJQDOFA450MYO4ZMIPP">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">61</td>
+</tr>
+</table><br><a name="IDK5NX0U1HYTCBKKAGRC0XPOHQQJC2ONMVLKQU0UP0WEFOUGYZ4VMP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1357.601mil|Location2.X=1370.429mil|Location1.Y=1247.533mil|Location2.Y=1258.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1357.601mil|Location2.X=1370.429mil|Location1.Y=1247.533mil|Location2.Y=1258.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.023mm &lt; 0.254mm) Between Pad JP?-(34.829mm,31.442mm) on Multi-Layer And Pad JP?-A1(34.369mm,32.512mm) on Top Layer [Top Solder] Mask Sliver [0.023mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1379.103mil|Location2.X=1390.353mil|Location1.Y=1246.104mil|Location2.Y=1257.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1379.103mil|Location2.X=1390.353mil|Location1.Y=1246.104mil|Location2.Y=1257.354mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.13mm &lt; 0.254mm) Between Pad JP?-(34.829mm,31.442mm) on Multi-Layer And Pad JP?-B9(35.469mm,32.512mm) on Top Layer [Top Solder] Mask Sliver [0.13mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1601.149mil|Location2.X=1614.023mil|Location1.Y=1247.533mil|Location2.Y=1258.783mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1601.149mil|Location2.X=1614.023mil|Location1.Y=1247.533mil|Location2.Y=1258.783mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.023mm &lt; 0.254mm) Between Pad JP?-(40.609mm,31.442mm) on Multi-Layer And Pad JP?-A12(41.069mm,32.512mm) on Top Layer [Top Solder] Mask Sliver [0.023mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.647mil|Location2.X=1590.897mil|Location1.Y=1246.104mil|Location2.Y=1257.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1579.647mil|Location2.X=1590.897mil|Location1.Y=1246.104mil|Location2.Y=1257.354mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.13mm &lt; 0.254mm) Between Pad JP?-(40.609mm,31.442mm) on Multi-Layer And Pad JP?-B4(39.969mm,32.512mm) on Top Layer [Top Solder] Mask Sliver [0.13mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1335.182mil|Location2.X=1346.432mil|Location1.Y=1247.934mil|Location2.Y=1259.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1335.182mil|Location2.X=1346.432mil|Location1.Y=1247.934mil|Location2.Y=1259.184mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad JP?-A1(34.369mm,32.512mm) on Top Layer And Pad JP?-S1(33.394mm,31.922mm) on Multi-Layer [Top Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1623.568mil|Location2.X=1634.818mil|Location1.Y=1247.934mil|Location2.Y=1259.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1623.568mil|Location2.X=1634.818mil|Location1.Y=1247.934mil|Location2.Y=1259.184mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.122mm &lt; 0.254mm) Between Pad JP?-A12(41.069mm,32.512mm) on Top Layer And Pad JP?-S2(42.044mm,31.922mm) on Multi-Layer [Top Solder] Mask Sliver [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1667.17mil|Location2.X=1678.42mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1667.17mil|Location2.X=1678.42mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-1(41.989mm,39.896mm) on Top Layer And Pad U1-2(42.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021.501mil|Location2.X=2032.751mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021.501mil|Location2.X=2032.751mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-10(50.989mm,39.896mm) on Top Layer And Pad U1-11(51.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.131mil|Location2.X=1993.381mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.131mil|Location2.X=1993.381mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-10(50.989mm,39.896mm) on Top Layer And Pad U1-9(49.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2060.871mil|Location2.X=2072.121mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2060.871mil|Location2.X=2072.121mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-11(51.989mm,39.896mm) on Top Layer And Pad U1-12(52.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2100.241mil|Location2.X=2111.491mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2100.241mil|Location2.X=2111.491mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-12(52.989mm,39.896mm) on Top Layer And Pad U1-13(53.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2139.611mil|Location2.X=2150.861mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2139.611mil|Location2.X=2150.861mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-13(53.989mm,39.896mm) on Top Layer And Pad U1-14(54.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2178.981mil|Location2.X=2190.231mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2178.981mil|Location2.X=2190.231mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-14(54.989mm,39.896mm) on Top Layer And Pad U1-15(55.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1679.257mil|Location2.Y=1690.507mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1679.257mil|Location2.Y=1690.507mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-16(58.239mm,42.296mm) on Top Layer And Pad U1-17(58.239mm,43.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1718.627mil|Location2.Y=1729.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1718.627mil|Location2.Y=1729.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-17(58.239mm,43.296mm) on Top Layer And Pad U1-18(58.239mm,44.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2251.816mil|Location2.X=2263.066mil|Location1.Y=1757.997mil|Location2.Y=1769.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2251.816mil|Location2.X=2263.066mil|Location1.Y=1757.997mil|Location2.Y=1769.247mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-18(58.239mm,44.296mm) on Top Layer And Pad U1-19(58.239mm,45.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1797.367mil|Location2.Y=1808.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1797.367mil|Location2.Y=1808.617mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-19(58.239mm,45.296mm) on Top Layer And Pad U1-20(58.239mm,46.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1706.54mil|Location2.X=1717.79mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1706.54mil|Location2.X=1717.79mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-2(42.989mm,39.896mm) on Top Layer And Pad U1-3(43.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2251.816mil|Location2.X=2263.066mil|Location1.Y=1836.737mil|Location2.Y=1847.987mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2251.816mil|Location2.X=2263.066mil|Location1.Y=1836.737mil|Location2.Y=1847.987mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-20(58.239mm,46.296mm) on Top Layer And Pad U1-21(58.239mm,47.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1876.107mil|Location2.Y=1887.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1876.107mil|Location2.Y=1887.357mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-21(58.239mm,47.296mm) on Top Layer And Pad U1-22(58.239mm,48.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1915.477mil|Location2.Y=1926.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1915.477mil|Location2.Y=1926.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-22(58.239mm,48.296mm) on Top Layer And Pad U1-23(58.239mm,49.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1954.847mil|Location2.Y=1966.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=1954.847mil|Location2.Y=1966.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-23(58.239mm,49.296mm) on Top Layer And Pad U1-24(58.239mm,50.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2251.816mil|Location2.X=2263.066mil|Location1.Y=1994.217mil|Location2.Y=2005.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2251.816mil|Location2.X=2263.066mil|Location1.Y=1994.217mil|Location2.Y=2005.467mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-24(58.239mm,50.296mm) on Top Layer And Pad U1-25(58.239mm,51.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=2033.588mil|Location2.Y=2044.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=2033.588mil|Location2.Y=2044.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-25(58.239mm,51.296mm) on Top Layer And Pad U1-26(58.239mm,52.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=2072.957mil|Location2.Y=2084.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2322.682mil|Location2.X=2333.932mil|Location1.Y=2072.957mil|Location2.Y=2084.207mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-26(58.239mm,52.296mm) on Top Layer And Pad U1-27(58.239mm,53.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2178.981mil|Location2.X=2190.231mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2178.981mil|Location2.X=2190.231mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-28(55.989mm,55.696mm) on Top Layer And Pad U1-29(54.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2139.611mil|Location2.X=2150.861mil|Location1.Y=2222.564mil|Location2.Y=2233.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2139.611mil|Location2.X=2150.861mil|Location1.Y=2222.564mil|Location2.Y=2233.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-29(54.989mm,55.696mm) on Top Layer And Pad U1-30(53.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1745.91mil|Location2.X=1757.16mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1745.91mil|Location2.X=1757.16mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-3(43.989mm,39.896mm) on Top Layer And Pad U1-4(44.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2100.241mil|Location2.X=2111.491mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2100.241mil|Location2.X=2111.491mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-30(53.989mm,55.696mm) on Top Layer And Pad U1-31(52.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2060.871mil|Location2.X=2072.121mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2060.871mil|Location2.X=2072.121mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-31(52.989mm,55.696mm) on Top Layer And Pad U1-32(51.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021.501mil|Location2.X=2032.751mil|Location1.Y=2222.564mil|Location2.Y=2233.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021.501mil|Location2.X=2032.751mil|Location1.Y=2222.564mil|Location2.Y=2233.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-32(51.989mm,55.696mm) on Top Layer And Pad U1-33(50.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.131mil|Location2.X=1993.381mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.131mil|Location2.X=1993.381mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-33(50.989mm,55.696mm) on Top Layer And Pad U1-34(49.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1942.761mil|Location2.X=1954.011mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1942.761mil|Location2.X=1954.011mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-34(49.989mm,55.696mm) on Top Layer And Pad U1-35(48.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1903.391mil|Location2.X=1914.641mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1903.391mil|Location2.X=1914.641mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-35(48.989mm,55.696mm) on Top Layer And Pad U1-36(47.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1864.021mil|Location2.X=1875.271mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1864.021mil|Location2.X=1875.271mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-36(47.989mm,55.696mm) on Top Layer And Pad U1-37(46.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1824.65mil|Location2.X=1835.9mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1824.65mil|Location2.X=1835.9mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-37(46.989mm,55.696mm) on Top Layer And Pad U1-38(45.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.281mil|Location2.X=1796.531mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.281mil|Location2.X=1796.531mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-38(45.989mm,55.696mm) on Top Layer And Pad U1-39(44.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1745.91mil|Location2.X=1757.16mil|Location1.Y=2222.564mil|Location2.Y=2233.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1745.91mil|Location2.X=1757.16mil|Location1.Y=2222.564mil|Location2.Y=2233.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-39(44.989mm,55.696mm) on Top Layer And Pad U1-40(43.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.281mil|Location2.X=1796.531mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1785.281mil|Location2.X=1796.531mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-4(44.989mm,39.896mm) on Top Layer And Pad U1-5(45.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1706.54mil|Location2.X=1717.79mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1706.54mil|Location2.X=1717.79mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-40(43.989mm,55.696mm) on Top Layer And Pad U1-41(42.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1667.17mil|Location2.X=1678.42mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1667.17mil|Location2.X=1678.42mil|Location1.Y=2151.698mil|Location2.Y=2162.948mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-41(42.989mm,55.696mm) on Top Layer And Pad U1-42(41.989mm,55.696mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=2072.958mil|Location2.Y=2084.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=2072.958mil|Location2.Y=2084.208mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-43(39.739mm,53.296mm) on Top Layer And Pad U1-44(39.739mm,52.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.336mil|Location2.X=1605.586mil|Location1.Y=2033.588mil|Location2.Y=2044.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.336mil|Location2.X=1605.586mil|Location1.Y=2033.588mil|Location2.Y=2044.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-44(39.739mm,52.296mm) on Top Layer And Pad U1-45(39.739mm,51.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1994.217mil|Location2.Y=2005.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1994.217mil|Location2.Y=2005.467mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-45(39.739mm,51.296mm) on Top Layer And Pad U1-46(39.739mm,50.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1954.847mil|Location2.Y=1966.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1954.847mil|Location2.Y=1966.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-46(39.739mm,50.296mm) on Top Layer And Pad U1-47(39.739mm,49.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.336mil|Location2.X=1605.586mil|Location1.Y=1915.477mil|Location2.Y=1926.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.336mil|Location2.X=1605.586mil|Location1.Y=1915.477mil|Location2.Y=1926.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-47(39.739mm,49.296mm) on Top Layer And Pad U1-48(39.739mm,48.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1876.107mil|Location2.Y=1887.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1876.107mil|Location2.Y=1887.357mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-48(39.739mm,48.296mm) on Top Layer And Pad U1-49(39.739mm,47.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1836.737mil|Location2.Y=1847.987mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1836.737mil|Location2.Y=1847.987mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-49(39.739mm,47.296mm) on Top Layer And Pad U1-50(39.739mm,46.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1824.65mil|Location2.X=1835.9mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1824.65mil|Location2.X=1835.9mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-5(45.989mm,39.896mm) on Top Layer And Pad U1-6(46.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1797.367mil|Location2.Y=1808.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1797.367mil|Location2.Y=1808.617mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-50(39.739mm,46.296mm) on Top Layer And Pad U1-51(39.739mm,45.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.336mil|Location2.X=1605.586mil|Location1.Y=1757.997mil|Location2.Y=1769.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1594.336mil|Location2.X=1605.586mil|Location1.Y=1757.997mil|Location2.Y=1769.247mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-51(39.739mm,45.296mm) on Top Layer And Pad U1-52(39.739mm,44.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1718.627mil|Location2.Y=1729.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1718.627mil|Location2.Y=1729.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-52(39.739mm,44.296mm) on Top Layer And Pad U1-53(39.739mm,43.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1679.257mil|Location2.Y=1690.507mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1523.47mil|Location2.X=1534.72mil|Location1.Y=1679.257mil|Location2.Y=1690.507mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-53(39.739mm,43.296mm) on Top Layer And Pad U1-54(39.739mm,42.296mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1864.021mil|Location2.X=1875.271mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1864.021mil|Location2.X=1875.271mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-6(46.989mm,39.896mm) on Top Layer And Pad U1-7(47.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1903.391mil|Location2.X=1914.641mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1903.391mil|Location2.X=1914.641mil|Location1.Y=1529.651mil|Location2.Y=1540.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-7(47.989mm,39.896mm) on Top Layer And Pad U1-8(48.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1942.761mil|Location2.X=1954.011mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1942.761mil|Location2.X=1954.011mil|Location1.Y=1600.517mil|Location2.Y=1611.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U1-8(48.989mm,39.896mm) on Top Layer And Pad U1-9(49.989mm,39.896mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1958.91mil|Location2.X=1970.16mil|Location1.Y=2708.375mil|Location2.Y=2719.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1958.91mil|Location2.X=1970.16mil|Location1.Y=2708.375mil|Location2.Y=2719.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad U2-C1(49.264mm,69.712mm) on Top Layer And Pad U2-C5(50.534mm,69.712mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2008.91mil|Location2.X=2020.16mil|Location1.Y=2769.525mil|Location2.Y=2780.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2008.91mil|Location2.X=2020.16mil|Location1.Y=2769.525mil|Location2.Y=2780.775mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad U2-C2(51.804mm,69.712mm) on Top Layer And Pad U2-C5(50.534mm,69.712mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2058.91mil|Location2.X=2070.16mil|Location1.Y=2708.375mil|Location2.Y=2719.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2058.91mil|Location2.X=2070.16mil|Location1.Y=2708.375mil|Location2.Y=2719.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad U2-C2(51.804mm,69.712mm) on Top Layer And Pad U2-C6(53.074mm,69.712mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2108.91mil|Location2.X=2120.16mil|Location1.Y=2769.525mil|Location2.Y=2780.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2108.91mil|Location2.X=2120.16mil|Location1.Y=2769.525mil|Location2.Y=2780.775mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad U2-C3(54.344mm,69.712mm) on Top Layer And Pad U2-C6(53.074mm,69.712mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2158.91mil|Location2.X=2170.16mil|Location1.Y=2708.375mil|Location2.Y=2719.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Projects\Industrial\FUM Satellite\Hardware\FUMSAT Station\FUMSAT Station PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2158.91mil|Location2.X=2170.16mil|Location1.Y=2708.375mil|Location2.Y=2719.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.167mm &lt; 0.254mm) Between Pad U2-C3(54.344mm,69.712mm) on Top Layer And Pad U2-C7(55.614mm,69.712mm) on Top Layer [Top Solder] Mask Sliver [0.167mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

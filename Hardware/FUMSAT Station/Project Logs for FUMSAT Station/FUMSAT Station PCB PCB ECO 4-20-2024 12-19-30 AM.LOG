@@ -1,0 +1,40 @@
+Added Component: Designator=D?(SMA)
+Add component (AddParameter): Name = "BOM??"; Value = "?????"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "????"; Value = "www.ooocke.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "????"; Value = "???"; VariantName = "[No Variations]"
+Added Component: Designator=D?(SMA)
+Add component (AddParameter): Name = "BOM??"; Value = "?????"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "????"; Value = "www.ooocke.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "????"; Value = "???"; VariantName = "[No Variations]"
+Added Component: Designator=JP?(USB-C-RIGHT)
+Added Pin To Net: NetName=VBAT1C Pin=D?-2
+Added Pin To Net: NetName=GND Pin=JP?-A1
+Added Pin To Net: NetName=GND Pin=JP?-A12
+Added Pin To Net: NetName=GND Pin=JP?-B1
+Added Pin To Net: NetName=GND Pin=JP?-B12
+Added Pin To Net: NetName=3.3V Pin=M1-1
+Added Pin To Net: NetName=GND Pin=M1-14
+Added Pin To Net: NetName=TURN_ON_PULSE Pin=M1-15
+Added Pin To Net: NetName=GND Pin=M1-20
+Added Pin To Net: NetName=E01_MOSI Pin=M1-21
+Added Pin To Net: NetName=E01_IRQ Pin=M1-22
+Added Pin To Net: NetName=E01_CSN Pin=M1-25
+Added Pin To Net: NetName=GND Pin=M1-26
+Added Pin To Net: NetName=E01_MISO Pin=M1-27
+Added Pin To Net: NetName=E01_SCK Pin=M1-28
+Added Pin To Net: NetName=E01_CE Pin=M1-29
+Added Pin To Net: NetName=RXD_MAIN Pin=M1-30
+Added Pin To Net: NetName=TXD_MAIN Pin=M1-31
+Added Pin To Net: NetName=5V Pin=D?-1
+Added Pin To Net: NetName=5V Pin=JP?-A4
+Added Pin To Net: NetName=5V Pin=JP?-A9
+Added Pin To Net: NetName=5V Pin=JP?-B4
+Added Pin To Net: NetName=5V Pin=JP?-B9
+Added Pin To Net: NetName=5V Pin=M1-19
+Added Net: Name=5V
+Added Pin To Net: NetName=NetD?_1 Pin=D?-1
+Added Pin To Net: NetName=NetD?_1 Pin=D?-2
+Added Net: Name=NetD?_1
+Added Member To Class: ClassName=Main Member=Component D? M7
+Added Member To Class: ClassName=Main Member=Component D? M7
+Added Member To Class: ClassName=Main Member=Component JP? USB-C

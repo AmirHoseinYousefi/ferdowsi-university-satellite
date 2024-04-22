@@ -1,0 +1,14 @@
+Change Component Footprint: Designator=X1 Old Footprint=u.Fl 3P New Footprint=SMA Female-RA
+Change Component Footprint: Designator=X2 Old Footprint=u.Fl 3P New Footprint=SMA Female-RA
+Change Component Comment : Designator=X1 Old Comment=u.Fl New Comment=SMA
+Change Component Comment : Designator=X2 Old Comment=u.Fl New Comment=SMA
+Change component parameters: Designator = "X1" ("X1"); Footprint = "u.Fl 3P"; UniqueID = "\ZOYXIATX" ("\ZOYXIATX")
+Change component parameters (AddParameter): Name = "ComponentKind"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "X2" ("X2"); Footprint = "u.Fl 3P"; UniqueID = "\HFLHOYRD" ("\HFLHOYRD")
+Change component parameters (AddParameter): Name = "ComponentKind"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "HelpURL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Model"; Value = ""; VariantName = "[No Variations]"
